@@ -54,8 +54,10 @@ void AnimateWindowUp(HWND hwnd, int startPosX, int startPosY, int endPosY, int s
         Sleep(10);  // 창이 움직이는 속도 조절
     }
 }
-
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
+    // 유니코드 사용을 위해 wwinmain 사용
+int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
+    // 콘솔 창 해제
+    FreeConsole();
     // 윈도우 클래스 설정 (유니코드 문자열 사용)
     WNDCLASSW wc = { 0 };
     wc.lpfnWndProc = WindowProcedure; // 창 프로시저 연결
