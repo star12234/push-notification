@@ -1,3 +1,5 @@
-gcc -municode -o 원하는 파일이름.exe prototype.c -lgdi32
+gcc -municode -o 원하는 파일이름.exe 실행하고자하는파일.c -lgdi32
+ex ) gcc -municode -o prototype.exe prototype.c -lgdi32
 
--lgdi32는 winapi를 사용하기 위해 반드시 포함해야하는 flag 입니다.
+-lgdi32는 winapi를 사용하기 위해 포함해야하는 flag 입니다.
+exe파일과 c파일의 순서를 틀리면 c파일이 삭제됩니다.
