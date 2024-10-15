@@ -1,8 +1,6 @@
 #include <windows.h>
 #include <stdio.h>
-
-#define UNICODE // 유니코드 정의
-
+ 
 // 창 프로시저 (WindowProcedure)
 LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) {
     switch (message) {
@@ -54,8 +52,8 @@ void AnimateWindowUp(HWND hwnd, int startPosX, int startPosY, int endPosY, int s
         Sleep(10);  // 창이 움직이는 속도 조절
     }
 }
-    // 유니코드 사용을 위해 wwinmain 사용
-int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
+ // 유니코드를 사용하기 위해 wWinmain
+int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nShowCmd){
     // 콘솔 창 해제
     FreeConsole();
     // 윈도우 클래스 설정 (유니코드 문자열 사용)
@@ -93,7 +91,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
         MessageBoxW(NULL, L"Window creation failed!", L"Error", MB_ICONEXCLAMATION | MB_OK);
         return 1;
     }
-    //x초 이후에 종료 (5초)
+    
+    // x초 이후에 종료 (5초)
     SetTimer(hwnd, 1, 5000, NULL);
     
     // 창 표시 및 업데이트
@@ -103,7 +102,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
     // 창을 위로 올리는 애니메이션
     AnimateWindowUp(hwnd, startPosX, startPosY, endPosY, 5);
 
-    // 메시지 루프
+    // 메시지 루프x
     MSG msg;
     while (GetMessage(&msg, NULL, 0, 0)) {
         TranslateMessage(&msg);
